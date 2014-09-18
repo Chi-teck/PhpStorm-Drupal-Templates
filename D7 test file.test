@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Tests for ${NAME}.module.
+ */
+
+/**
+ * Tests the functionality of the ${NAME} module.
+ */
+class ${NAME}TestCase extends DrupalWebTestCase {
+
+  /**
+   * A user with permission to administer ${NAME} configuration.
+   *
+   * @var object
+   */
+  protected ${DS}admin_user;
+
+  public static function getInfo() {
+    return array(
+      'name' => '${NAME}',
+      'description' => 'Test description',
+      'group' => '${NAME}',
+    );
+  }
+
+  function setUp() {
+    parent::setUp(array('${NAME}'));
+
+    // Create admin account.
+    ${DS}this->admin_user = ${DS}this->drupalCreateUser(array('administer ${NAME} configuration'));
+
+    ${DS}this->drupalLogin(${DS}this->admin_user);
+  }
+
+  /**
+   * Tests configuration form.
+   */
+  function testAdminForm() {
+    ${DS}fields = array(
+      '${NAME}_setting_1' => 'test',
+      '${NAME}_setting_2' => 1,
+      '${NAME}_setting_3' => 1,
+    );
+    ${DS}this->drupalPost('admin/config/system/${NAME}', ${DS}fields, t('Save configuration'));
+
+    ${DS}this->assertFieldByName('${NAME}_setting_1', 'test');
+    ${DS}this->assertFieldByName('${NAME}_setting_2', 1);
+    ${DS}this->assertFieldByName('${NAME}_setting_3', 1);
+    ${DS}this->assertRaw(t('The configuration options have been saved.'));
+  }
+
+}

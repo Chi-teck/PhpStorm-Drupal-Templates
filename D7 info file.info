@@ -1,0 +1,9 @@
+name = ${Human_name}
+description = ${Description}
+package = ${Package}
+core = 7.x
+version = ${Version}
+
+;configure = admin/config/system/${NAME}
+;dependencies[] = system (>7.31)
+;files[] = tests/${NAME}.test

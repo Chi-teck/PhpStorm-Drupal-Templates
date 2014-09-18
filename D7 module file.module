@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for ${NAME} module.
+ */
+
+/**
+ * Implements hook_init().
+ */
+function ${NAME}_init() {
+  drupal_set_message('It works!');
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ${NAME}_menu() {
+
+   ${DS}items['${NAME}'] = array(
+    'title' => '${NAME}',
+    'description' => '${NAME} main page.',
+    'page callback' => '${NAME}_main_page',
+    'page arguments' => array('${NAME}_settings_form'),
+    'access arguments' => array('view ${NAME} page'),
+    'file' => '${NAME}.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  ${DS}items['admin/config/system/${NAME}'] = array(
+    'title' => '${NAME}',
+    'description' => '${NAME} settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('${NAME}_settings_form'),
+    'access arguments' => array('administer ${NAME} configuration'),
+    'file' => '${NAME}.admin.inc',
+  );
+
+  return ${DS}items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ${NAME}_permission() {
+  return array(
+    'view ${NAME} page' => array(
+      'title' => t('View ${NAME} page'),
+      'description' => t('View ${NAME} page.'),
+    ),
+    'administer ${NAME} configuration' => array(
+      'title' => t('Administer ${NAME} configuration'),
+      'description' => t('Administer ${NAME} configuration.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
