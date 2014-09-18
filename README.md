@@ -1,2 +1,2 @@
-phpstorm_drupal_templates
-=========================
+PhpStorm file templates for Drupal development
+==============================================
